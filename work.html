@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work Section</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        /* Hero Section */
+        .our-work-hero {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            padding-left: 50px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .our-work-hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        /* Compact Categories */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 15px 20px;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-weight: normal;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background-color: #000;
+            color: white;
+        }
+
+        .category-btn.empty {
+            opacity: 0.5;
+        }
+
+        /* Vertical Work Items */
+        .work-container {
+            padding: 20px;
+            max-width: auto;
+            margin: 0 auto;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 50px;
+            color: #888;
+            font-size: 1.2rem;
+            grid-column: 1 / -1;
+            display: none;
+        }
+
+        .work-item {
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: white;
+            overflow: hidden;
+        }
+
+        .work-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .work-content {
+            padding: 15px;
+        }
+
+        .work-category {
+            display: inline-block;
+            background-color: #000;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            margin-bottom: 10px;
+        }
+
+        .work-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+        }
+
+        .work-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .our-work-hero {
+                height: 250px;
+                padding-left: 20px;
+                justify-content: center;
+            }
+
+            .our-work-hero h1 {
+                font-size: 2rem;
+            }
+
+            .category-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<header>
+    <nav>
+        <div class="nav-container">
+            <div class="logo-mobile">
+                <a href="index.html">globalinfluencer</a>
+                <!-- <span>globalinfluencer</span> -->
+                <div class="logo-mobile-box">
+                </div>
+
+                <button class="mobile-menu-button" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="nav-links">
+                <ul class="left-nav">
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="brand.html">BRANDS</a></li>
+                    <li><a href="work.html">WORK</a></li>
+                    <!-- <li><a href="#">MEASUREMENT</a></li>
+                        <li><a href="#">CAREERS</a></li>
+                        <li><a href="#">RESOURCES</a></li> -->
+                </ul>
+
+                <div class="right-nav">
+                    <a href="signin.html" class="sign-in">SIGN IN</a>
+                    <a href="contact.html" class="cta-button">contact</a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+
+    <section class="our-work-hero">
+        <h1>OUR WORK</h1>
+    </section>
+
+    <div class="categories">
+        <button class="category-btn active" data-category="all">ALL</button>
+        <button class="category-btn" data-category="food">FOOD</button>
+        <button class="category-btn" data-category="beauty">BEAUTY</button>
+        <button class="category-btn empty" data-category="tech">TECH</button>
+        <button class="category-btn empty" data-category="automotive">AUTO</button>
+        <button class="category-btn empty" data-category="entertainment">ENTERTAIN</button>
+        <button class="category-btn empty" data-category="fashion">FASHION</button>
+        <button class="category-btn empty" data-category="finance">FINANCE</button>
+        <button class="category-btn empty" data-category="gaming">GAMING</button>
+        <button class="category-btn empty" data-category="retail">RETAIL</button>
+        <button class="category-btn empty" data-category="sports">SPORTS</button>
+        <button class="category-btn empty" data-category="travel">TRAVEL</button>
+    </div>
+
+    <div class="work-container">
+        <div class="work-grid">
+            <div class="empty-message">No items found in this category</div>
+
+            <!-- Food Category Items (5 items) -->
+            <div class="work-item" data-categories="food">
+                <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Food Campaign">
+                <div class="work-content">
+                    <span class="work-category">FOOD</span>
+                    <h3 class="work-title">HOT TAKES ON HOT SHAKES</h3>
+                    <p class="work-description">FLAVOUR FAVOURS THE BRAVE</p>
+                </div>
+            </div>
+
+            <div class="work-item" data-categories="food">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Food Campaign">
+                <div class="work-content">
+                    <span class="work-category">FOOD</span>
+                    <h3 class="work-title">FRESH FARM FINDS</h3>
+                    <p class="work-description">Organic produce delivered</p>
+                </div>
+            </div>
+
+            <div class="work-item" data-categories="food">
+                <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Food Campaign">
+                <div class="work-content">
+                    <span class="work-category">FOOD</span>
+                    <h3 class="work-title">ARTISAN BAKERY</h3>
+                    <p class="work-description">Handcrafted breads daily</p>
+                </div>
+            </div>
+
+            <div class="work-item" data-categories="food">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Food Campaign">
+                <div class="work-content">
+                    <span class="work-category">FOOD</span>
+                    <h3 class="work-title">HEALTHY MEAL PREP</h3>
+                    <p class="work-description">Nutritionist-approved meals</p>
+                </div>
+            </div>
+
+            <div class="work-item" data-categories="food">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Food Campaign">
+                <div class="work-content">
+                    <span class="work-category">FOOD</span>
+                    <h3 class="work-title">GOURMET FOOD TRUCK</h3>
+                    <p class="work-description">Street food elevated</p>
+                </div>
+            </div>
+
+            <!-- Beauty Category Items (5 items) -->
+            <div class="work-item" data-categories="beauty">
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Beauty Campaign">
+                <div class="work-content">
+                    <span class="work-category">BEAUTY</span>
+                    <h3 class="work-title">SHARK FLEXSTYLE</h3>
+                    <p class="work-description">Innovative styling solutions</p>
+                </div>
+            </div>
+
+            <div class="work-item" data-categories="beauty">
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Beauty Campaign">
+                <div class="work-content">
+                    <span class="work-category">BEAUTY</span>
+                    <h3 class="work-title">SKIN REVIVAL SERUM</h3>
+                    <p class="work-description">Age-defying formula</p>
+                </div>
+            </div>
+
+            <div class="work-item" data-categories="beauty">
+                <img src="https://images.unsplash.com/photo-1591073113125-e46713c829ed?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Beauty Campaign">
+                <div class="work-content">
+                    <span class="work-category">BEAUTY</span>
+                    <h3 class="work-title">LUXURY HAIR CARE</h3>
+                    <p class="work-description">Salon-quality at home</p>
+                </div>
+            </div>
+
+            <div class="work-item" data-categories="beauty">
+                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Beauty Campaign">
+                <div class="work-content">
+                    <span class="work-category">BEAUTY</span>
+                    <h3 class="work-title">MINERAL MAKEUP</h3>
+                    <p class="work-description">Natural beauty enhanced</p>
+                </div>
+            </div>
+
+            <div class="work-item" data-categories="beauty">
+                <img src="https://images.unsplash.com/photo-1526758097130-bab247274f58?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Beauty Campaign">
+                <div class="work-content">
+                    <span class="work-category">BEAUTY</span>
+                    <h3 class="work-title">FRAGRANCE COLLECTION</h3>
+                    <p class="work-description">Signature scents</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="sentiment">
+            POSITIVE SENTIMENT: <span class="sentiment-value">92%</span>
+        </div>
+
+        <div class="footer-cta">
+            <h2>READY TO MAKE WAVES?</h2>
+            <button class="footer-button">LET'S TALK</button>
+        </div>
+
+        <div class="footer-links">
+            <div class="footer-column">
+                <h3>PRODUCT</h3>
+                <ul>
+                    <li><a href="brand.html">Brands</a></li>
+                    <!-- <li><a href="#">Measurement</a></li> -->
+                    <li><a href="creater.html">Creators</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <!-- <li><a href="#">Careers</a></li> -->
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>RESOURCES</h3>
+                <ul>
+                    <li><a href="work.html">Work</a></li>
+                    <!-- <li><a href="#">Resources</a></li> -->
+                    <li><a href="#">Payments</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>SOCIAL</h3>
+                <ul>
+                    <li><a href="https://www.instagram.com/globalinfulancer">Instagram</a></li>
+                    <li><a href="#">X</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>LEGAL</h3>
+                <ul>
+                    <li><a href="#">Platform Terms</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Creator Terms</a></li>
+                    <li><a href="#">Creator Terms US</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Influencer Marketing Agency. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const workItems = document.querySelectorAll('.work-item');
+            const workGrid = document.querySelector('.work-grid');
+            const emptyMessage = document.querySelector('.empty-message');
+
+            // First check which categories have content
+            const categoriesWithContent = new Set(['all']);
+            workItems.forEach(item => {
+                const itemCategories = item.getAttribute('data-categories').split(' ');
+                itemCategories.forEach(cat => categoriesWithContent.add(cat));
+            });
+
+            // Mark empty category buttons (visual only)
+            categoryButtons.forEach(button => {
+                const category = button.getAttribute('data-category');
+                if (category !== 'all' && !categoriesWithContent.has(category)) {
+                    button.classList.add('empty');
+                }
+            });
+
+            // Click handler for all category buttons
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const category = this.getAttribute('data-category');
+                    let visibleItems = 0;
+
+                    // Filter work items
+                    workItems.forEach(item => {
+                        if (category === 'all') {
+                            item.style.display = 'block';
+                            visibleItems++;
+                        } else {
+                            const itemCategories = item.getAttribute('data-categories').split(' ');
+                            if (itemCategories.includes(category)) {
+                                item.style.display = 'block';
+                                visibleItems++;
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        }
+                    });
+
+                    // Show empty message if no items
+                    if (visibleItems === 0) {
+                        emptyMessage.style.display = 'block';
+                    } else {
+                        emptyMessage.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+    <script src="footer.js"></script>
+
+</body>
+
+</html>
