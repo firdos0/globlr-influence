@@ -32,9 +32,9 @@
                         <li><a href="#">ABOUT</a></li>
                         <li><a href="#">BRANDS</a></li>
                         <li><a href="#">WORK</a></li>
-                        <li><a href="#">MEASUREMENT</a></li>
+                        <!-- <li><a href="#">MEASUREMENT</a></li>
                         <li><a href="#">CAREERS</a></li>
-                        <li><a href="#">RESOURCES</a></li>
+                        <li><a href="#">RESOURCES</a></li> -->
                     </ul>
 
                     <div class="right-nav">
@@ -219,10 +219,215 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const brandBtn = document.querySelector(".btn-primary");
+            const creatorBtn = document.querySelector(".btn-secondary");
+            const formContainer = document.querySelector(".form-container");
+
+            // ===== Load Brand Form =====
+            function loadBrandForm() {
+                formContainer.innerHTML = `
+            <h2>Brand Partnership Form</h2>
+            <p class="subtitle">Our brand team will respond within 24 hours</p>
+            <form id="brandForm">
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <div class="input-container">
+                        <i class="fas fa-building"></i>
+                        <input type="text" id="company" placeholder="Your Company" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="domainEmail">Company Email (Domain Required)</label>
+                    <div class="input-container">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="domainEmail" placeholder="name@yourcompany.com" required>
+                    </div>
+                    <small id="emailError" style="color:red;display:none;">Invalid Email Address</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="campaign">Campaign Details</label>
+                    <div class="input-container">
+                        <i class="fas fa-bullhorn"></i>
+                        <textarea id="campaign" placeholder="Tell us about your campaign..." required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Brand Request</button>
+            </form>
+            <div id="brandMessage"></div>
+        `;
+
+                // Email validation
+                const emailInput = document.getElementById("domainEmail");
+                const emailError = document.getElementById("emailError");
+                emailInput.addEventListener("input", () => {
+                    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    emailError.style.display = pattern.test(emailInput.value) ? "none" : "block";
+                    const freeProviders = [
+                        "gmail.com", "yahoo.com", "hotmail.com",
+                        "outlook.com", "aol.com", "icloud.com"
+                    ];
+
+                    emailInput.addEventListener("input", () => {
+                        const value = emailInput.value.trim();
+                        const formatValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+                        const domain = value.split("@")[1]?.toLowerCase();
+                        const isFree = freeProviders.includes(domain);
+
+                        if (formatValid && !isFree) {
+                            emailError.style.display = "none";
+                        } else {
+                            emailError.style.display = "block";
+                            emailError.textContent = "❌ Please use your company/professional email.";
+                        }
+                    });
+
+                });
+
+                // Brand form handler
+                const brandForm = document.getElementById("brandForm");
+                brandForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const company = document.getElementById("company").value.trim();
+                    const domainEmail = document.getElementById("domainEmail").value.trim();
+                    const campaign = document.getElementById("campaign").value.trim();
+
+                    try {
+                        const res = await fetch("http://localhost:5000/send-brand", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ company, domainEmail, campaign })
+                        });
+                        const data = await res.json();
+                        showMessage("brandMessage", data.message, data.success);
+                        if (data.success) brandForm.reset();
+                    } catch (err) {
+                        console.error(err);
+                        showMessage("brandMessage", "❌ Failed to send brand request. Please try again.", false);
+                    }
+                });
+            }
+
+            // ===== Load Creator Form =====
+            function loadCreatorForm() {
+                formContainer.innerHTML = `
+            <h2>Get in Touch</h2>
+            <p class="subtitle">Our team will respond within 24 hours</p>
+            <form id="creatorForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <div class="input-container">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-container">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <div class="input-container">
+                        <i class="fas fa-tag"></i>
+                        <select id="subject" required>
+                            <option value="" disabled selected>Select a topic</option>
+                            <option value="creator">Creator Application</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Support</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <div class="input-container">
+                        <i class="fas fa-comment"></i>
+                        <textarea id="message" placeholder="Tell us about your project..." required></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <div id="creatorMessage"></div>
+        `;
+
+                // Creator form handler
+                const creatorForm = document.getElementById("creatorForm");
+                creatorForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById("name").value.trim();
+                    const email = document.getElementById("email").value.trim();
+                    const subject = document.getElementById("subject").value;
+                    const message = document.getElementById("message").value.trim();
+
+                    try {
+                        const res = await fetch("http://localhost:5000/send-creator", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ name, email, subject, message })
+                        });
+                        const data = await res.json();
+                        showMessage("creatorMessage", data.message, data.success);
+                        if (data.success) creatorForm.reset();
+                    } catch (err) {
+                        console.error(err);
+                        showMessage("creatorMessage", "❌ Failed to send creator message. Please try again.", false);
+                    }
+                });
+            }
+
+            // Helper for feedback messages
+            function showMessage(elementId, message, success) {
+                const el = document.getElementById(elementId);
+                el.textContent = message;
+                el.style.color = success ? "green" : "red";
+            }
+
+            // Event bindings
+            // brandBtn.addEventListener("click", (e) => {
+            //     e.preventDefault();
+            //     loadBrandForm();
+            // });
+
+            // creatorBtn.addEventListener("click", (e) => {
+            //     e.preventDefault();
+            //     loadCreatorForm();
+            // });
+            // Event bindings
+            brandBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                loadBrandForm();
+
+                // toggle active button
+                brandBtn.classList.add("active");
+                creatorBtn.classList.remove("active");
+            });
+
+            creatorBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                loadCreatorForm();
+
+                // toggle active button
+                creatorBtn.classList.add("active");
+                brandBtn.classList.remove("active");
+            });
+
+        });
+    </script>
+
+
+
 
     <script src="script.js"></script>
     <script src="footer.js"></script>
-    <script src="contact.js"></script>
+    <!-- <script src="contact.js"></script> -->
+    <!-- <script src="server.js"></script> -->
 </body>
 
 </html>
