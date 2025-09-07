@@ -1,16 +1,14 @@
 :root {
-    --primary: #FF3E82;
-    /* Vibrant pink */
-    --secondary: #00C2FF;
-    /* Electric blue */
-    --accent: #FFD700;
-    /* Gold */
+    --primary: #FF6A00;
+    /* Vibrant Orange */
+    --secondary: #FF3E82;
+    /* Hot Pink */
+    --accent: #8A2EFF;
+    /* Purple/Violet */
     --dark: #1A1A2E;
-    /* Dark navy */
+    /* Deep Navy */
     --light: #F8F9FA;
-    /* Light gray */
-    --text: #333333;
-    --text-light: #777777;
+    /* Soft Light */
 }
 
 * {
@@ -90,6 +88,7 @@ body {
 .btn-primary {
     /* background: linear-gradient(90deg, var(--primary), var(--secondary)); */
     color: black;
+    border: 2px solid var(--secondary);
 }
 
 .btn-primary:hover {
