@@ -271,7 +271,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 40px 20px;
+    padding: 40px 20px 0px 200px;
     max-width: auto;
     margin: auto;
     gap: 40px;
@@ -841,6 +841,7 @@ footer:hover .footer-cta h2 {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    text-decoration: none;
 }
 
 .footer-button:hover {
