@@ -2,723 +2,440 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GlowJoy Creators — Build, Collaborate, Earn</title>
-    <meta name="description"
-        content="A unique creator landing page with gradient brand styling. No copyrighted layout or copy. Fully responsive and fast." />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Page</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            /* Gradient derived from the logo: orange → pink → purple  */
-            --brand-grad: linear-gradient(135deg, #ff9a1f 0%, #ff3e82 45%, #7a2cff 100%);
-            --brand-1: #ff3e82;
-            --brand-2: #7a2cff;
-            --ink-1: #0f1222;
-            --ink-2: #23263a;
-            --ink-3: #5d6180;
-            --bg: #ffffff;
-            /* dark to make gradient pop */
-            --panel: rgba(255, 255, 255, 0.04);
-            --ring: rgba(255, 62, 130, 0.45);
-            /* --white: #ffffff; */
-            --muted: #b8b9c6;
-            --green: #3ddc97;
-            --red: #ff5d5d;
-            --radius: 18px;
-            --shadow-1: 0 10px 30px rgba(0, 0, 0, 0.35);
-            --shadow-2: 0 6px 24px rgba(122, 44, 255, 0.25);
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            height: 100%;
-        }
-
         body {
             margin: 0;
-            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-            color: var(--white);
-            background: radial-gradient(1200px 700px at 80% -10%, rgba(122, 44, 255, 0.2), transparent 60%),
-                radial-gradient(900px 600px at -10% 30%, rgba(255, 62, 130, 0.18), transparent 55%),
-                var(--bg);
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff;
+            color: #111;
+            line-height: 1.6;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
+        section {
+            /* max-width: 1200px; */
+            margin: auto;
+            padding: 60px 20px;
         }
 
-        img {
-            max-width: 100%;
-            display: block;
+        h2 {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-align: center;
+            /* background: linear-gradient(90deg, #8a2be2, #ff3e82, #ff8c00); */
+            color: black;
+            -webkit-background-clip: text;
+            /* -webkit-text-fill-color: transparent; */
         }
 
-        /* Layout helpers */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 20px;
-            border-radius: 999px;
-            font-weight: 600;
-            border: 0;
-            cursor: pointer;
-            backdrop-filter: saturate(140%);
-            background-image: var(--brand-grad);
-            color: #fff;
-            box-shadow: var(--shadow-2);
-        }
-
-        .btn.ghost {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            color: #fff;
-        }
-
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            border-radius: 999px;
-            font-size: 12px;
-            letter-spacing: 0.2px;
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-        }
-
-        /* Header
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(11, 13, 22, 0.7);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .nav {
+        /* ================= MAGIC LINKS ================= */
+        /* ✅ Fix Magic Section */
+        .magic-section {
+            padding-left: 120px;
             display: flex;
+            /* flex-wrap: wrap; */
             align-items: center;
             justify-content: space-between;
-            padding: 14px 0;
+            gap: 40px;
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .magic-image img {
+            border-radius: 25px;
+            max-width: 100%;
+            /* 👈 makes image shrink */
+            height: auto;
         }
 
-        .brand .logo {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background-image: var(--brand-grad);
-            display: grid;
-            place-items: center;
-            box-shadow: var(--shadow-2);
+        /* 📱 Tablet (below 900px) */
+        @media (max-width: 900px) {
+            .magic-section {
+                padding-left: 20px;
+                /* 👈 remove huge padding */
+                padding-right: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .magic-text {
+                text-align: center;
+            }
         }
 
-        .brand .logo img {
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+        /* 📱 Phone (below 600px) */
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 24px;
+                /* smaller headings */
+            }
+
+            .magic-text h2 {
+                font-size: 22px;
+            }
+
+            .magic-text p,
+            .magic-text ul li {
+                font-size: 14px;
+            }
+
+            .testimonial-card img {
+                height: 200px;
+                /* shrink images for phones */
+            }
+
+            .creator-community h2 {
+                font-size: 1.4rem;
+            }
+
+            .creator-community p {
+                font-size: 0.9rem;
+            }
+
+            footer .footer-links {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                /* 2 columns instead of 5 */
+                gap: 20px;
+                text-align: center;
+            }
         }
 
-        .brand .name {
-            font-weight: 800;
-            letter-spacing: 0.2px;
+        /* 📱 Extra small devices (below 400px) */
+        @media (max-width: 400px) {
+            .footer-links {
+                grid-template-columns: 1fr;
+                /* stack columns */
+            }
+        }
+
+
+        /* ================= CREATOR TESTIMONIALS ================= */
+        .intro {
             font-size: 18px;
-            background-image: var(--brand-grad);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 22px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #e8e8ef;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-
-        .nav-cta {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        /* Mobile menu */
-        /* .menu-btn { 
-            display: none;
-            background: transparent;
-            border: 0;
-            color: #fff;
-            font-size: 22px;
-        } */
-        /* 
-        @media (max-width: 900px) {
-            .nav-links {
-                display: none;
-            }
-
-            .menu-btn {
-                display: block;
-            }
-        } */
-
-        /* Hero */
-        .hero {
-            position: relative;
-            overflow: clip;
-        }
-
-        .hero .container {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 36px;
-            padding: 72px 20px;
-        }
-
-        .hero h1 {
-            font-size: clamp(36px, 6vw, 64px);
-            line-height: 1.05;
-            margin: 10px 0 16px;
-            letter-spacing: -0.02em;
-        }
-
-        .hero p {
-            color: var(--muted);
-            font-size: clamp(16px, 2.2vw, 18px);
-            margin: 0 0 24px;
-        }
-
-        .blob {
-            position: absolute;
-            inset: auto -200px -120px auto;
-            width: 720px;
-            height: 720px;
-            filter: blur(60px) saturate(140%);
-            opacity: 0.45;
-            pointer-events: none;
-            background: radial-gradient(closest-side, rgba(255, 62, 130, 0.75), transparent 70%),
-                radial-gradient(closest-side, rgba(122, 44, 255, 0.75), transparent 65%),
-                radial-gradient(closest-side, rgba(255, 154, 31, 0.8), transparent 60%);
-            border-radius: 50%;
-            transform: translate(0, 0) rotate(15deg);
-            animation: float 18s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-
-            50% {
-                transform: translate(20px, -30px) rotate(12deg);
-            }
-        }
-
-        .panel {
-            background: var(--panel);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-1);
-        }
-
-        .hero-card {
-            padding: 24px;
-            display: grid;
-            gap: 18px;
-        }
-
-        .hero-form {
-            display: grid;
-            gap: 10px;
-            grid-template-columns: 1.3fr auto;
-        }
-
-        .hero-form input {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.06);
-            color: #fff;
-            outline: none;
-        }
-
-        .hero-form input::placeholder {
-            color: #cfd0d9;
-            opacity: 0.8;
-        }
-
-        .hero-badges {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        /* Features */
-        .section {
-            padding: 72px 0;
-        }
-
-        .section h2 {
-            font-size: clamp(28px, 4.6vw, 40px);
-            margin: 0 0 12px;
-        }
-
-        .section p.lead {
-            color: var(--muted);
-            margin: 0 0 26px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-
-        @media (max-width: 900px) {
-            .hero .container {
-                grid-template-columns: 1fr;
-            }
-
-            .grid-3 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .card {
-            padding: 22px;
-            display: grid;
-            gap: 12px;
-        }
-
-        .icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
-            background-image: var(--brand-grad);
-            display: grid;
-            place-items: center;
-            font-weight: 800;
-        }
-
-        .muted {
-            color: var(--muted);
-        }
-
-        /* Stats ribbon */
-        .ribbon {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-        }
-
-        .stat {
+            max-width: 850px;
+            margin: auto;
+            margin-bottom: 40px;
+            color: #555;
             text-align: center;
-            padding: 18px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.09);
         }
 
-        .stat .num {
-            font-size: 28px;
-            font-weight: 800;
-            background-image: var(--brand-grad);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .stat .lbl {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        @media (max-width: 900px) {
-            .ribbon {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Creator grid */
-        .creator-grid {
+        .testimonials {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            /* max-width: 1200px; */
+            /* 👈 keeps layout centered */
+            margin: 0 auto;
         }
 
-        .creator {
-            aspect-ratio: 1;
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .creator small {
-            position: absolute;
-            left: 10px;
-            bottom: 10px;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 6px 8px;
-            border-radius: 10px;
-        }
-
-        @media (max-width: 900px) {
-            .creator-grid {
+        /* ✅ Limit to max 3 columns */
+        @media (min-width: 900px) {
+            .testimonials {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
-        /* CTA banner */
-        .cta {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 20px;
-            align-items: center;
-            padding: 28px;
-        }
-
-        .cta .illustration {
-            min-height: 220px;
-            border-radius: 16px;
-            background: radial-gradient(140px 140px at 70% 30%, rgba(255, 62, 130, 0.6), transparent 70%), radial-gradient(140px 140px at 30% 70%, rgba(122, 44, 255, 0.6), transparent 70%), linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.0));
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        @media (max-width: 900px) {
-            .cta {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Footer */
-        footer {
-            padding: 48px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            color: #cfd0d9;
-        }
-
-        .foot {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr 1fr;
-            gap: 20px;
-        }
-
-        .foot h4 {
-            margin: 0 0 10px;
-            color: #fff;
-        }
-
-        .foot a {
-            display: block;
-            padding: 6px 0;
-            color: #d7d8e4;
-            opacity: 0.9;
-        }
-
-        @media (max-width: 900px) {
-            .foot {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        /* Reveal on scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity .6s ease, transform .6s ease;
-        }
-
-        .reveal.in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Accessibility helpers */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
+        .testimonial-card {
+            background: #fafafa;
+            border-radius: 12px;
             overflow: hidden;
-            clip: rect(0, 0, 1px, 1px);
-            white-space: nowrap;
-            border: 0;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .testimonial-text {
+            padding: 20px;
+            font-size: 16px;
+            color: #ff3e82;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-text {
+                font-size: 15px;
+            }
+        }
+
+        /* ================= CREATOR COMMUNITY ================= */
+        .creator-community {
+            background: linear-gradient(135deg, #8a2be2, #ff3e82, #ff8c00);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        .creator-community h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .creator-community p {
+            max-width: 850px;
+            margin: 10px auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* 📱 Responsive adjustments */
+        @media (max-width: 768px) {
+            .creator-community {
+                padding: 60px 15px;
+            }
+
+            .creator-community h2 {
+                font-size: 2rem;
+            }
+
+            .creator-community p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .creator-community {
+                padding: 40px 10px;
+            }
+
+            .creator-community h2 {
+                font-size: 1.6rem;
+            }
+
+            .creator-community p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
         }
     </style>
 </head>
-<header>
-    <nav>
-        <div class="nav-container">
-            <div class="logo-mobile">
-                <a href="index.html">globalinfluencer</a>
-                <!-- <span>globalinfluencer</span> -->
-                <div class="logo-mobile-box">
-                </div>
-
-                <button class="mobile-menu-button" aria-label="Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-
-            <div class="nav-links">
-                <ul class="left-nav">
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">BRANDS</a></li>
-                    <li><a href="#">WORK</a></li>
-                    <!-- <li><a href="#">MEASUREMENT</a></li>
-                        <li><a href="#">CAREERS</a></li>
-                        <li><a href="#">RESOURCES</a></li> -->
-                </ul>
-
-                <div class="right-nav">
-                    <a href="signin.html" class="sign-in">SIGN IN</a>
-                    <a href="contact.html" class="cta-button">contact</a>
-
-                </div>
-            </div>
-        </div>
-    </nav>
-</header>
 
 <body>
-
-
-    <main id="top">
-        <section class="hero">
-            <div class="blob" aria-hidden="true"></div>
-            <div class="container">
-                <div>
-                    <span class="chip">✨ Built for creators & brands</span>
-                    <h1>Connect, collaborate, and grow with a platform that matches <em
-                            style="background:var(--brand-2); background:var(--brand-grad); -webkit-background-clip:text; color:transparent">your
-                            vibe</em>.</h1>
-                    <p>Unique design, zero copycats. Manage proposals, execute campaigns, and track performance in one
-                        beautiful dashboard designed around your gradient brand.</p>
-                    <div class="hero-badges">
-                        <span class="chip">No code needed</span>
-                        <span class="chip">Contracts & payouts</span>
-                        <span class="chip">Real-time analytics</span>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo-mobile">
+                    <a href="index.html">globalinfluencer</a>
+                    <div class="logo-mobile-box">
                     </div>
-                    <div class="panel hero-card" style="margin-top:18px">
-                        <form class="hero-form"
-                            onsubmit="event.preventDefault(); document.getElementById('signupMsg').classList.add('in'); this.reset();">
-                            <label class="sr-only" for="email">Email</label>
-                            <input id="email" type="email" placeholder="Enter your email to join the beta" required />
-                            <button class="btn" type="submit">Request Invite →</button>
-                        </form>
-                        <small id="signupMsg" class="reveal" aria-live="polite">Thanks! We’ll send you an invite
-                            soon.</small>
+
+                    <button class="mobile-menu-button" aria-label="Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+
+                <div class="nav-links">
+                    <ul class="left-nav">
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="brands.html">BRANDS</a></li>
+                        <li><a href="work.html">WORK</a></li>
+                        <!-- <li><a href="#">MEASUREMENT</a></li>
+                        <li><a href="#">CAREERS</a></li>
+                        <li><a href="#">RESOURCES</a></li> -->
+
+
+                    </ul>
+
+                    <div class="right-nav">
+                        <a href="signin.html" class="sign-in">SIGN IN</a>
+                        <a href="contact.html" class="cta-button">contact</a>
+
                     </div>
                 </div>
-                <div class="panel hero-card">
-                    <div class="chip">Live preview</div>
-                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop"
-                        alt="App preview" style="border-radius:12px; border:1px solid rgba(255,255,255,0.08)" />
-                    <small class="muted">A conceptual dashboard preview. Replace with your own screenshots.</small>
-                </div>
             </div>
-        </section>
-
-        <section id="features" class="section container">
-            <h2 class="reveal">Everything you need to run creator campaigns</h2>
-            <p class="lead reveal">From discovery to reporting, we keep it simple and fast—without copying anyone’s
-                layout or words.</p>
-
-            <div class="grid-3">
-                <article class="panel card reveal">
-                    <div class="icon" aria-hidden="true">🔎</div>
-                    <h3>Smart Discovery</h3>
-                    <p class="muted">Find creators and brands that actually match your audience using tags, reach, and
-                        sentiment—not just follower counts.</p>
-                </article>
-                <article class="panel card reveal">
-                    <div class="icon" aria-hidden="true">🤝</div>
-                    <h3>Collab Workspace</h3>
-                    <p class="muted">Briefs, approvals, assets, and timelines in one shared space so nobody chases links
-                        again.</p>
-                </article>
-                <article class="panel card reveal">
-                    <div class="icon" aria-hidden="true">📈</div>
-                    <h3>Performance Insights</h3>
-                    <p class="muted">Track posts, clicks, and conversions with clean reporting your clients can
-                        understand.</p>
-                </article>
-            </div>
-
-            <div class="ribbon" style="margin-top: 26px;" aria-label="Highlights">
-                <div class="stat reveal">
-                    <div class="num">50k+</div>
-                    <div class="lbl">creators indexed</div>
-                </div>
-                <div class="stat reveal">
-                    <div class="num">98%</div>
-                    <div class="lbl">briefs approved on time</div>
-                </div>
-                <div class="stat reveal">
-                    <div class="num">7 min</div>
-                    <div class="lbl">average setup</div>
-                </div>
-                <div class="stat reveal">
-                    <div class="num">$1.2M</div>
-                    <div class="lbl">payouts processed</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="creators" class="section container">
-            <div style="display:flex; align-items:end; justify-content:space-between; gap: 16px; margin-bottom: 16px;">
-                <div>
-                    <h2 class="reveal">Meet the community</h2>
-                    <p class="lead reveal">A diverse network across lifestyle, tech, beauty, and more. These are
-                        placeholders—swap with your real partners.</p>
-                </div>
-                <a href="#join" class="btn reveal">Become a creator</a>
-            </div>
-            <div class="creator-grid">
-                <!-- Placeholder avatars using Unsplash; replace anytime -->
-                <div class="creator reveal"><img alt="creator"
-                        src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" />
-                </div>
-                <div class="creator reveal"><img alt="creator"
-                        src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?q=80&w=800&auto=format&fit=crop" />
-                </div>
-                <div class="creator reveal"><img alt="creator"
-                        src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop" />
-                </div>
-                <div class="creator reveal"><img alt="creator"
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop" />
-                </div>
-                <div class="creator reveal"><img alt="creator"
-                        src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?q=80&w=800&auto=format&fit=crop" />
-                </div>
-                <div class="creator reveal"><img alt="creator"
-                        src="https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=800&auto=format&fit=crop" />
-                </div>
-                <div class="creator reveal"><img alt="creator"
-                        src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=800&auto=format&fit=crop" />
-                </div>
-                <div class="creator reveal"><img alt="creator"
-                        src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=800&auto=format&fit=crop" />
-                </div>
-                <div class="creator reveal"><img alt="creator"
-                        src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop" />
-                </div>
-                <div class="creator reveal"><img alt="creator"
-                        src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=800&auto=format&fit=crop" />
-                </div>
-                <div class="creator reveal"><img alt="creator"
-                        src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=800&auto=format&fit=crop" />
-                </div>
-                <div class="creator reveal"><img alt="creator"
-                        src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" />
-                </div>
-            </div>
-        </section>
-
-
+        </nav>
+    </header>
+    <!-- CREATOR TESTIMONIALS SECTION -->
+    <section>
+        <div class="intro">
+            <p>
+                At Influencer, we embrace the creative explosion in this fast-paced industry, guiding a global network
+                of creators to soar beyond their boundaries. Spanning diverse niches — from beauty and sports to gaming
+                and gastronomy — our vibrant creator network bubbles with active, engaged audiences.
+            </p>
+            <p>
+                Every campaign is a partnership tailor-made for success, aligning creators and brands for mutual wins.
+                We don't just match creators with brands; we ignite transformative collaborations.
+            </p>
         </div>
-        </div>
-        </section>
 
-        <section id="join" class="section container">
-            <div class="panel cta reveal">
-                <div>
-                    <h3 style="margin:0 0 8px">Ready to build something real?</h3>
-                    <p class="muted" style="margin:0 0 16px">Join the beta and get early access, templates, and priority
-                        support. We’ll never copy another site’s layout or text.</p>
-                    <form class="hero-form"
-                        onsubmit="event.preventDefault(); alert('Thanks! We will be in touch.'); this.reset();">
-                        <label class="sr-only" for="email2">Email</label>
-                        <input id="email2" type="email" placeholder="you@brand.com" required />
-                        <button class="btn" type="submit">Join the beta</button>
-                    </form>
+        <h2>CREATOR TESTIMONIALS</h2>
+
+        <div class="testimonials">
+            <!-- Card 1 -->
+            <div class="testimonial-card">
+                <img src="https://images.unsplash.com/photo-1658207951097-96f86cc0a1c8?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Creator 1">
+                <div class="testimonial-text">
+                    "INFLUENCER HAVE BEEN AMAZING! WITHOUT THEM I COULDN’T OF WORKED WITH SUCH HUGE BRANDS! THE
+                    COMMUNICATION BETWEEN TALENT AND CLIENT IS 10 OUT OF 10! LOVE THEM!"
                 </div>
-                <div class="illustration" aria-hidden="true"></div>
             </div>
-        </section>
-    </main>
+
+            <!-- Card 2 -->
+            <div class="testimonial-card">
+                <img src="https://images.unsplash.com/photo-1658207951097-96f86cc0a1c8?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Creator 2">
+                <div class="testimonial-text">
+                    "INFLUENCER HAVE BEEN AMAZING! WITHOUT THEM I COULDN’T OF WORKED WITH SUCH HUGE BRANDS! THE
+                    COMMUNICATION BETWEEN TALENT AND CLIENT IS 10 OUT OF 10! LOVE THEM!"
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="testimonial-card">
+                <img src="https://images.unsplash.com/photo-1658207951097-96f86cc0a1c8?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Creator 3">
+                <div class="testimonial-text">
+                    "INFLUENCER HAVE BEEN AMAZING! WITHOUT THEM I COULDN’T OF WORKED WITH SUCH HUGE BRANDS! THE
+                    COMMUNICATION BETWEEN TALENT AND CLIENT IS 10 OUT OF 10! LOVE THEM!"
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="testimonial-card">
+                <img src="https://images.unsplash.com/photo-1658207951097-96f86cc0a1c8?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Creator 4">
+                <div class="testimonial-text">
+                    "INFLUENCER HAVE BEEN AMAZING! WITHOUT THEM I COULDN’T OF WORKED WITH SUCH HUGE BRANDS! THE
+                    COMMUNICATION BETWEEN TALENT AND CLIENT IS 10 OUT OF 10! LOVE THEM!"
+                </div>
+            </div>
+        </div>
+    </section>
 
 
+    <!-- MAGIC LINKS SECTION -->
+    <section class="magic-section">
+        <div class="magic-text">
+            <h2>DITCH THE LOGIN: DISCOVER THE CONVENIENCE OF MAGIC LINKS</h2>
 
+            <h3>WHAT ARE MAGIC LINKS?</h3>
+            <p>
+                Magic Links are secure, one-time-use links that provide direct access to our platform, eliminating the
+                need to remember usernames or passwords. Simply click the link in the email you receive from <span
+                    class="highlight">noreply@influencer.com</span>, and you're in!
+            </p>
+
+            <h3>WHY USE MAGIC LINKS?</h3>
+            <ul>
+                <li><span class="highlight">Effortless Access:</span> Say goodbye to forgotten passwords. Magic Links
+                    make logging in quick and easy.</li>
+                <li><span class="highlight">Enhanced Security:</span> Each link is unique and can only be used once,
+                    ensuring your account remains protected.</li>
+                <li><span class="highlight">Seamless Experience:</span> Enjoy a smoother and more convenient experience
+                    partnering with Influencer.</li>
+            </ul>
+
+            <p class="cta">Try Magic Links Now for a Hassle-Free Login Experience!</p>
+        </div>
+
+        <div class="magic-image">
+            <img src="Gemini_Generated_Image_3iinzw3iinzw3iin.png" alt="Phone with Magic Links Example">
+        </div>
+    </section>
+
+    <!-- Creator Community Section -->
+    <section class="creator-community">
+        <div class="community-content">
+            <h2>JOIN OUR CREATOR COMMUNITY</h2>
+            <p>
+                Become part of an exclusive, trusted network of creators and collaborate with the world’s top brands.
+            </p>
+            <p>
+                At Influencer, we make it simple to discover campaigns, create amazing content, and get rewarded for
+                your work.
+                Our Creator Community is built to support your growth—helping you land more opportunities, connect with
+                bigger
+                audiences, and succeed on your creative journey.
+            </p>
+        </div>
+    </section>
     <footer>
-        <small><span id="year"></span> </small>
+        <div class="sentiment">
+            POSITIVE SENTIMENT: <span class="sentiment-value">92%</span>
+        </div>
 
+        <div class="footer-cta">
+            <h2>READY TO MAKE WAVES?</h2>
+            <button class="footer-button">LET'S TALK</button>
+        </div>
+
+        <div class="footer-links">
+            <div class="footer-column">
+                <h3>PRODUCT</h3>
+                <ul>
+                    <li><a href="brand.html">Brands</a></li>
+                    <!-- <li><a href="#">Measurement</a></li> -->
+                    <li><a href="creater.html">Creators</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <!-- <li><a href="#">Careers</a></li> -->
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>RESOURCES</h3>
+                <ul>
+                    <li><a href="#">Work</a></li>
+                    <!-- <li><a href="#">Resources</a></li> -->
+                    <li><a href="#">Payments</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>SOCIAL</h3>
+                <ul>
+                    <li><a href="https://www.instagram.com/globalinfulancer">Instagram</a></li>
+                    <li><a href="#">X</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+
+
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>LEGAL</h3>
+                <ul>
+                    <li><a href="#">Platform Terms</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Creator Terms</a></li>
+                    <li><a href="#">Creator Terms US</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Influencer Marketing Agency. All rights reserved.
+            </div>
+        </div>
     </footer>
-    <script src="script.js"></script>
-    <script>
-
-        // Current year
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Simple reveal-on-scroll
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-        }, { threshold: 0.14 });
-        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-        // Mobile menu (minimal)
-        const menuBtn = document.getElementById('menuBtn');
-        menuBtn?.addEventListener('click', () => {
-            const links = document.querySelector('.nav-links');
-            const isOpen = links.style.display === 'flex';
-            links.style.display = isOpen ? 'none' : 'flex';
-            links.style.flexDirection = 'column';
-            links.style.gap = '16px';
-            links.style.background = 'rgba(11,13,22,0.98)';
-            links.style.position = 'absolute';
-            links.style.top = '60px';
-            links.style.left = '0';
-            links.style.right = '0';
-            links.style.padding = '16px 20px 20px';
-            links.style.borderBottom = '1px solid rgba(255,255,255,0.06)';
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', (e) => {
-                const id = a.getAttribute('href');
-                if (!id || id === '#') return;
-                const el = document.querySelector(id);
-                if (el) {
-                    e.preventDefault();
-                    window.scrollTo({ top: el.offsetTop - 60, behavior: 'smooth' });
-                }
-            })
-        })
-    </script>
 </body>
 
 </html>
