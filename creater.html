@@ -16,6 +16,100 @@
             line-height: 1.6;
         }
 
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 10%;
+            background: linear-gradient(135deg, #8a2be2, #ff3e82, #ff8c00);
+            color: #fff;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 30px;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            max-width: 500px;
+        }
+
+        .hero-text .cta-btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            background: #fff;
+            color: #8a2be2;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .hero-text .cta-btn:hover {
+            background: #ff3e82;
+            color: #fff;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            min-width: 280px;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* ✨ Floating Animation */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* 📱 Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 60px 20px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+                margin: 0 auto 20px;
+            }
+        }
+
+
         section {
             /* max-width: 1200px; */
             margin: auto;
@@ -261,6 +355,24 @@
             </div>
         </nav>
     </header>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Grow Your Influence<br> with <span style="color:#FFD700;">Global Reach</span></h1>
+            <p>
+                Connect with top brands and create authentic campaigns that inspire millions.
+                Join our creator community today.
+            </p>
+            <button class="cta-btn" onclick="window.location.href='contact.html'">
+                Get Started
+            </button>
+
+        </div>
+        <div class="hero-image">
+            <img src="Gemini_Generated_Image_xkdjzgxkdjzgxkdj.png" alt="Hero Example"
+                onerror="this.src='https://via.placeholder.com/500x300.png?text=Hero+Image';">
+        </div>
+    </section>
     <!-- CREATOR TESTIMONIALS SECTION -->
     <section>
         <div class="intro">
