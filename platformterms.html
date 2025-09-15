@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Terms & Conditions of Use | Influencer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="header.css">
+    <style>
+        :root {
+            --primary: #9f0492ff;
+            --primary-light: #0077cc;
+            --secondary: #333;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --border: #dee2e6;
+            --success: #28a745;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+            scroll-behavior: smooth;
+            padding-left: 300px;
+        }
+
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* TOC */
+        .toc {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: #fff;
+            border-right: 1px solid var(--border);
+            padding: 120px 20px 40px;
+            z-index: 1000;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .toc h2 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary);
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+            padding-top: 10px;
+        }
+
+        .toc ol {
+            list-style: none;
+            counter-reset: item;
+            padding-bottom: 20px;
+        }
+
+        .toc ol li {
+            margin-bottom: 12px;
+            position: relative;
+            counter-increment: item;
+        }
+
+        .toc ol li::before {
+            content: counter(item) ".";
+            font-weight: 600;
+            color: var(--primary);
+            margin-right: 8px;
+            position: absolute;
+            left: 0;
+        }
+
+        .toc ol li a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: block;
+            padding: 6px 10px 6px 25px;
+            border-radius: 6px;
+            margin-left: -10px;
+        }
+
+        .toc ol li a:hover,
+        .toc ol li a.active {
+            color: var(--primary);
+            background-color: rgba(0, 85, 153, 0.08);
+            transform: translateX(4px);
+        }
+
+        /* Main content */
+        .main-content {
+            padding: 30px 0;
+        }
+
+        .content-section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .content-section:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .content-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-light);
+            color: var(--primary);
+        }
+
+        .content-section h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 15px;
+            color: var(--secondary);
+        }
+
+        .content-section p {
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .content-section a {
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .content-section a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer,
+        .footer {
+            background: var(--secondary);
+            color: #fff;
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 0.9rem;
+            border-radius: 12px 12px 0 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .badge {
+            background: var(--primary-light);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            body {
+                padding-left: 250px;
+            }
+
+            .toc {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            body {
+                padding-left: 0;
+            }
+
+            .toc {
+                position: relative;
+                width: 100%;
+                height: auto;
+                max-height: 300px;
+                margin: 0 auto 30px;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .wrap {
+                padding: 0 15px;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            .content-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        strong {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .highlight {
+            background-color: rgba(0, 119, 204, 0.05);
+            border-left: 4px solid var(--primary);
+            padding-left: 26px !important;
+            margin-left: -30px !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Imported Header -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo-mobile">
+                    <a href="index.html">globallylinfulancer</a>
+                    <div class="logo-mobile-box"></div>
+                    <button class="mobile-menu-button" aria-label="Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <div class="nav-links">
+                    <ul class="left-nav">
+                        <li><a href="work.html">WORK</a></li>
+                        <li><a href="brand.html">BRANDS</a></li>
+                        <li><a href="resources.html">RESOURCES</a></li>
+                    </ul>
+                    <div class="right-nav">
+                        <a href="signin.html" class="sign-in">SIGN IN</a>
+                        <a href="contact.html" class="cta-button">CONTACT</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Terms Heading -->
+    <header>
+        <div class="wrap">
+            <h1>TERMS &amp; CONDITIONS OF USE</h1>
+            <p class="lead">Please read these terms carefully before using this Platform.</p>
+            <p class="notice"><strong>Summary:</strong> These terms explain the rules for accessing and using <a
+                    href="https://www.globallyinfluencer.com/" target="_blank"
+                    rel="noopener">https://www.globallyinfluencer.com/</a> (the "Platform"). By using the Platform, you
+                agree to these terms.</p>
+        </div>
+    </header>
+
+    <!-- TOC and Main -->
+    <div class="wrap">
+        <nav class="toc" aria-label="Table of contents">
+            <h2>Contents</h2>
+            <ol>
+                <li><a href="#intro" class="active">Introduction</a></li>
+                <li><a href="#who-we-are">Who We Are & Contact</a></li>
+                <li><a href="#acceptance">Acceptance of these Terms</a></li>
+                <li><a href="#other-terms">Other Applicable Terms</a></li>
+                <li><a href="#changes-terms">Changes to these Terms</a></li>
+                <li><a href="#platform-updates">Updates to the Platform</a></li>
+                <li><a href="#campaigns">Using the Platform for Campaigns</a></li>
+                <li><a href="#availability">Suspension or Withdrawal</a></li>
+                <li><a href="#transfer">Transfer of Rights</a></li>
+                <li><a href="#security">Account Security</a></li>
+                <li><a href="#ip">Intellectual Property</a></li>
+                <li><a href="#scraping">No Text/Data Mining</a></li>
+                <li><a href="#reliance">Reliance on Information</a></li>
+                <li><a href="#links">Links to Other Websites</a></li>
+                <li><a href="#ugc">User‑Generated Content</a></li>
+                <li><a href="#complaints">How to Report Content</a></li>
+                <li><a href="#liability">Our Responsibility & Liability</a></li>
+                <li><a href="#privacy">Personal Data</a></li>
+                <li><a href="#uploading">Uploading Content & Acceptable Use</a></li>
+                <li><a href="#rights-granted">Rights You Grant Us</a></li>
+                <li><a href="#security-viruses">Security & Viruses</a></li>
+                <li><a href="#linking">Rules about Linking</a></li>
+                <li><a href="#law">Governing Law & Jurisdiction</a></li>
+                <li><a href="#trademarks">Trademarks</a></li>
+            </ol>
+        </nav>
+
+        <main class="main-content" id="top">
+            <!-- Content sections here (same as your full T&C sections) -->
+            <!-- Example for one section -->
+            <section id="intro" class="content-section">
+                <h2>1) Introduction</h2>
+                <p>These terms explain the rules for accessing and using our website <a
+                        href="https://www.globallyinfluencer.com/" target="_blank"
+                        rel="noopener">https://www.globallyinfluencer.com/</a> (the "Platform").</p>
+            </section>
+            <section id="who-we-are" class="content-section">
+                <h2>2) Who We Are &amp; How to Contact Us</h2>
+                <p>The Platform is owned and operated by <strong>Globally Influencer Pvt. Ltd.</strong> and its group
+                    affiliates (together, "Globally Influencer", "we", "us", or "our").</p>
+                <ul>
+                    <li>Globally Influencer Pvt. Ltd. is registered in India under the Companies Act, 2013 (CIN:
+                        <strong>[Insert CIN]</strong>), with its registered office at <strong>[Insert Registered Office
+                            Address, City, State, India]</strong>.
+                    </li>
+                    <li>Contact: <a href="mailto:support@globallyinfluencer.com">support@globallyinfluencer.com</a></li>
+                </ul>
+            </section>
+            <section id="acceptance" class="content-section">
+                <h2>3) Acceptance of these Terms</h2>
+                <p>By using our Platform, you confirm that you accept these terms of use and agree to comply with them.
+                    If you do not agree, you must not use the Platform.</p>
+            </section>
+            <section id="other-terms" class="content-section">
+                <h2>4) Other Applicable Terms</h2>
+                <ul>
+                    <li><strong>Privacy Policy:</strong> <a href="https://www.globallyinfluencer.com/privacy"
+                            target="_blank" rel="noopener">Privacy Policy</a></li>
+                    <li><strong>Creator Terms (India):</strong> <a
+                            href="https://www.globallyinfluencer.com/creator-terms" target="_blank"
+                            rel="noopener">Creator Terms &amp; Conditions</a></li>
+                    <li><strong>Brands:</strong> Use may be governed by a separate Master Services Agreement.</li>
+                </ul>
+                <p><strong>Statements of Work (SOWs):</strong> Prior to any Campaign, you will see a SOW detailing
+                    deliverables, fees, and applicable terms, including which Globally Influencer entity you contract
+                    with. You are not obliged to proceed, but if you accept, you agree to be bound by the applicable
+                    terms.</p>
+            </section>
+            <section id="changes-terms" class="content-section">
+                <h2>5) Changes to these Terms</h2>
+                <p>We may amend these terms from time to time. Each time you use the Platform, please review the current
+                    version.</p>
+            </section>
+            <section id="platform-updates" class="content-section">
+                <h2>6) Updates to the Platform</h2>
+                <p>We may update or change the Platform to reflect business priorities, user needs, or product updates.
+                    For major changes, we will try to give reasonable notice.</p>
+            </section>
+            <section id="campaigns" class="content-section">
+                <h2>7) Using the Platform for Campaigns</h2>
+                <h3 id="creators">Creators</h3>
+                <ul>
+                    <li>The Platform is free to access, but you must be 18+ to participate in Campaigns.</li>
+                    <li>We present Campaign proposals via SOWs with required deliverables and fees. If you agree, click
+                        "accept".</li>
+                    <li>After completion, submit an invoice; we will pay the agreed SOW fees subject to the applicable
+                        terms and accurate billing details in your profile.</li>
+                </ul>
+                <h3 id="brands">Brands</h3>
+                <ul>
+                    <li>Brands manage Campaigns and creator selection through our brand portal.</li>
+                    <li>Approval of creators via the portal constitutes binding approval under the applicable services
+                        agreement.</li>
+                </ul>
+            </section>
+            <section id="availability" class="content-section">
+                <h2>8) Suspension or Withdrawal</h2>
+                <p>We do not guarantee the Platform will always be available or uninterrupted. We may suspend, withdraw,
+                    or restrict any part of the Platform for business or operational reasons. We will try to give
+                    reasonable notice. You are responsible for ensuring anyone who accesses the Platform through your
+                    connection is aware of and complies with these terms.</p>
+            </section>
+            <section id="transfer" class="content-section">
+                <h2>9) Transfer of Rights</h2>
+                <p>We may transfer our rights and obligations under these terms to another organisation within Globally
+                    Influencer or otherwise. We will notify you in writing and ensure your rights are not affected.</p>
+            </section>
+            <section id="security" class="content-section">
+                <h2>10) Account Security</h2>
+                <ul>
+                    <li>Any user ID, password, or other security info must be kept confidential and not shared.</li>
+                    <li>We may disable credentials if we reasonably believe these terms have been breached.</li>
+                    <li>If you suspect unauthorised access, notify us promptly at <a
+                            href="mailto:support@globallyinfluencer.com">support@globallyinfluencer.com</a>.</li>
+                </ul>
+            </section>
+            <section id="ip" class="content-section">
+                <h2>11) Intellectual Property</h2>
+                <p>We (or our licensors) own all intellectual property rights in the Platform and its content, protected
+                    under the Indian Copyright Act, 1957 and the Trade Marks Act, 1999. All rights are reserved.</p>
+                <ul>
+                    <li>You may print or download extracts for personal use (e.g., SOWs or invoices for records).</li>
+                    <li>Do not modify downloaded/printed materials or separate media from accompanying text.</li>
+                    <li>Always acknowledge our status (and that of contributors) as content authors.</li>
+                    <li>No commercial use of Platform content without a licence from us or our licensors.</li>
+                    <li>Breaches may result in termination of access and requirements to return/destroy copies.</li>
+                </ul>
+            </section>
+            <section id="scraping" class="content-section">
+                <h2>12) No Text or Data Mining / Web Scraping</h2>
+                <p>You must not conduct, facilitate, authorise, or permit any text or data mining or web scraping in
+                    relation to the Platform or services. This includes any robot, bot, spider, scraper, or automated
+                    technique to access, copy, or republish Platform content.</p>
+            </section>
+            <section id="reliance" class="content-section">
+                <h2>13) Reliance on Information</h2>
+                <p>Content on the Platform is for general information only and not legal advice. Where you participate
+                    in Campaigns, you agree to be bound by applicable terms. Obtain independent professional advice
+                    before acting on Platform content. We make reasonable efforts to update information but give no
+                    warranty it is accurate, complete, or current.</p>
+            </section>
+            <section id="links" class="content-section">
+                <h2>14) Links to Other Websites</h2>
+                <p>Links to third‑party websites are provided for information only and are not endorsements. We have no
+                    control over external content and accept no responsibility for it.</p>
+            </section>
+            <section id="ugc" class="content-section">
+                <h2>15) User‑Generated Content</h2>
+                <p>Where users can upload materials, such content is not verified or approved by us and we accept no
+                    liability for it. Views expressed by users do not represent our views or values.</p>
+            </section>
+            <section id="complaints" class="content-section">
+                <h2>16) How to Complain or Report Content</h2>
+                <p>If you believe any material is illegal or harmful, contact us immediately at <a
+                        href="mailto:support@globallyinfluencer.com">support@globallyinfluencer.com</a>. In compliance
+                    with the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021,
+                    a Grievance Officer will address your complaint within the prescribed timelines.</p>
+            </section>
+            <section id="liability" class="content-section">
+                <h2>17) Our Responsibility for Loss or Damage</h2>
+                <ul>
+                    <li>The Platform is not intended for consumers.</li>
+                    <li>We do not exclude or limit liability where unlawful to do so under Indian law (e.g.,
+                        death/personal injury caused by negligence; fraud/fraudulent misrepresentation).</li>
+                    <li>Different limitations may apply under Campaign terms (see "Other Applicable Terms").</li>
+                    <li>To the fullest extent permitted by law, we are not liable for: loss of profits/sales/revenue;
+                        business interruption; loss of anticipated savings; loss of business opportunity, goodwill or
+                        reputation; or any indirect or consequential loss.</li>
+                </ul>
+            </section>
+            <section id="privacy" class="content-section">
+                <h2>18) How We Use Personal Information</h2>
+                <p>We will use your personal information as set out in our <a
+                        href="https://www.globallyinfluencer.com/privacy" target="_blank" rel="noopener">Privacy
+                        Policy</a>, in compliance with the Digital Personal Data Protection Act, 2023 and other
+                    applicable laws in India.</p>
+            </section>
+            <section id="uploading" class="content-section">
+                <h2>19) Uploading Content &amp; Acceptable Use</h2>
+                <p>When using features that allow uploads or contact with other users, you must comply with this
+                    Acceptable Use Policy.</p>
+                <!-- Acceptable use policy contents remain same, but legal references updated to Indian laws -->
+            </section>
+            <section id="rights-granted" class="content-section">
+                <h2>20) Rights You Grant Us</h2>
+                <p>When you upload or post content to the Platform, you grant us the rights to use such content in
+                    accordance with the applicable terms and SOWs.</p>
+            </section>
+            <section id="security-viruses" class="content-section">
+                <h2>21) Security &amp; Viruses</h2>
+                <p>We do not guarantee the Platform is secure or free from bugs/viruses. Configure your systems
+                    appropriately and use your own virus protection. Do not misuse the Platform by introducing malicious
+                    code, attempting unauthorised access, or launching denial‑of‑service attacks. Breach may constitute
+                    an offence under the <em>Information Technology Act, 2000</em>; we will report breaches and
+                    cooperate with authorities. Your right to use the Platform will cease immediately upon such breach.
+                </p>
+            </section>
+            <section id="linking" class="content-section">
+                <h2>22) Rules about Linking</h2>
+                <p>You may link to our homepage fairly and legally, provided it does not damage our reputation or
+                    suggest endorsement where none exists. For uses beyond this, contact <a
+                        href="mailto:support@globallyinfluencer.com">support@globallyinfluencer.com</a>.</p>
+            </section>
+            <section id="law" class="content-section">
+                <h2>23) Governing Law &amp; Jurisdiction</h2>
+                <p>These terms (and any non‑contractual disputes or claims) are governed by the laws of India. The
+                    courts of <strong>[Insert City, State, India]</strong> shall have exclusive jurisdiction.</p>
+            </section>
+    </div>
+    </main>
+    </div> <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
+    <script> // Highlight active section in TOC document.addEventListener('DOMContentLoaded', function() { const sections = document.querySelectorAll('.content-section'); const navLinks = document.querySelectorAll('.toc a'); const backToTop = document.querySelector('.back-to-top'); window.addEventListener('scroll', function() { let current = ''; const scrollPosition = window.scrollY + 200; // Highlight current section sections.forEach(section => { const sectionTop = section.offsetTop; const sectionHeight = section.offsetHeight; if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) { current = section.getAttribute('id'); } }); // Update active class in TOC navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href').substring(1) === current) { link.classList.add('active'); } }); // Show/hide back to top button if (window.scrollY > 500) { backToTop.classList.add('visible'); } else { backToTop.classList.remove('visible'); } }); // Smooth scrolling for anchor links document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const targetId = this.getAttribute('href'); if (targetId === '#') return; const targetElement = document.querySelector(targetId); if (targetElement) { window.scrollTo({ top: targetElement.offsetTop - 100, behavior: 'smooth' }); } }); }); }); </script>
+
+    <!-- Include all your other 24 sections here just like above -->
+    <!-- Footer -->
+    <div class="footer">
+        <span class="badge">Last updated: <time datetime="2025-09-15">15 Sep 2025</time></span>
+        &nbsp;•&nbsp; ©
+        <script>document.write(new Date().getFullYear())</script> Globally Influencer Pvt. Ltd. All rights reserved.
+        &nbsp;•&nbsp; <a href="#top">Back to top</a>
+    </div>
+    </main>
+    </div>
+
+    <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.content-section');
+            const navLinks = document.querySelectorAll('.toc a');
+            const backToTop = document.querySelector('.back-to-top');
+
+            window.addEventListener('scroll', function () {
+                let current = '';
+                const scrollPosition = window.scrollY + 200;
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
