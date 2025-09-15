@@ -157,13 +157,97 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Common style */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .category-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: none;
+            background: #f2f2f2;
+            color: #000;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .category-btn.active {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Hide filter button on desktop */
+        .filter-toggle {
+            display: none;
+            padding: 10px 20px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Mobile + Tablet view */
+        @media (max-width: 1024px) {
+            .filter-toggle {
+                display: block;
+            }
+
+            .categories {
+                display: none;
+                /* hidden by default on mobile */
+                flex-direction: column;
+                gap: 8px;
+                background: #fff;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+            }
+
+            .categories.show {
+                display: flex;
+                /* show when toggle is clicked */
+            }
+
+            .category-btn {
+                width: 100%;
+                text-align: left;
+                padding: 10px;
+                background: #f2f2f2;
+                border-radius: 6px;
+            }
+
+            .category-btn.active {
+                background: #000;
+                color: #fff;
+            }
+        }
+
+        /* Desktop view (unchanged) */
+        @media (min-width: 1025px) {
+            .categories {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <header>
     <nav>
         <div class="nav-container">
             <div class="logo-mobile">
-                <a href="index.html">globalinfluencer</a>
+                <a href="index.html">globallylinfulancer</a>
                 <div class="logo-mobile-box"></div>
 
                 <button class="mobile-menu-button" aria-label="Menu">
@@ -174,10 +258,10 @@
             <div class="nav-links">
                 <ul class="left-nav">
                     <!-- <li><a href="#">ABOUT</a></li> -->
-                     <li><a href="work.html">WORK</a></li>
+                    <li><a href="work.html">WORK</a></li>
                     <li><a href="brand.html">BRANDS</a></li>
                     <li><a href="resources.html">RESOURCES</a></li>
-                   
+
                 </ul>
 
                 <div class="right-nav">
@@ -195,10 +279,14 @@
         <h1>RESOURCES</h1>
     </section>
 
+    <!-- Filter button (only for mobile) -->
+    <button class="filter-toggle">Filter ▾</button>
+
+    <!-- Your existing categories -->
     <div class="categories">
         <button class="category-btn active" data-category="all">ALL</button>
         <button class="category-btn" data-category="food">FOOD</button>
-        <button class="category-btn " data-category="travel">TRAVEL</button>
+        <button class="category-btn" data-category="travel">TRAVEL</button>
         <button class="category-btn" data-category="fitness">FITNESS</button>
         <button class="category-btn" data-category="business">BUSINESS</button>
         <button class="category-btn" data-category="marketing">MARKETING</button>
@@ -218,18 +306,18 @@
         <button class="category-btn" data-category="brands-leverage">BRANDS LEVERAGE</button>
         <button class="category-btn" data-category="global-influencer">GLOBAL INFLUENCER</button>
         <button class="category-btn" data-category="beauty">BEAUTY</button>
-        <button class="category-btn " data-category="tech">TECH</button>
+        <button class="category-btn" data-category="tech">TECH</button>
         <button class="category-btn empty" data-category="automotive">AUTO</button>
         <button class="category-btn empty" data-category="entertainment">ENTERTAIN</button>
-        <button class="category-btn " data-category="fashion">FASHION</button>
-        <button class="category-btn " data-category="finance">FINANCE</button>
-        <button class="category-btn " data-category="gaming">GAMING</button>
+        <button class="category-btn" data-category="fashion">FASHION</button>
+        <button class="category-btn" data-category="finance">FINANCE</button>
+        <button class="category-btn" data-category="gaming">GAMING</button>
         <button class="category-btn empty" data-category="retail">RETAIL</button>
         <button class="category-btn empty" data-category="sports">SPORTS</button>
-        <button class="category-btn " data-category="travel">TRAVEL</button>
+        <button class="category-btn" data-category="travel">TRAVEL</button>
         <button class="category-btn" data-category="other">OTHER</button>
-
     </div>
+
 
     <div class="resources-container">
         <div class="resources-grid">
@@ -792,8 +880,8 @@
                 <ul>
                     <li><a href="platformterms.html">Platform Terms</a></li>
                     <li><a href="privicy.html">Privacy</a></li>
-                    <li><a href="Creator Terms US.html">Creator Terms</a></li>
-                    <li><a href="Creator Terms Company.html">Creator Terms US</a></li>
+                    <li><a href="Creator Terms Company.html">Creator Terms Company</a></li>
+                    <li><a href="Creator Terms.html">Creator Terms</a></li>
                 </ul>
             </div>
         </div>
@@ -809,6 +897,13 @@
     </footer>
 
     <script>
+        const filterBtn = document.querySelector(".filter-toggle");
+        const categories = document.querySelector(".categories");
+
+        filterBtn.addEventListener("click", () => {
+            categories.classList.toggle("show");
+        });
+
         document.addEventListener('DOMContentLoaded', function () {
             const categoryButtons = document.querySelectorAll('.category-btn');
             const resourcesItems = document.querySelectorAll('.resources-item');
