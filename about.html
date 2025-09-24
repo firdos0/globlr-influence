@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>About Us — Globally Influencer (3D section)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- <link rel="stylesheet" href="footer.css"> -->
+
+    <style>
+        :root {
+            --bg: #ebe9f5;
+            --card: #ffffff;
+            --muted: #6b6b7a;
+            --accent: #f900cbcb;
+            --glass: rgba(255, 255, 255, 0.7);
+            --radius: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(180deg, var(--bg), #f5f3fb 60%);
+            color: #111;
+
+            align-items: center;
+
+            justify-self: center;
+
+            perspective: 2000px;
+
+        }
+
+        .bg-title {
+            position: fixed;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 140px;
+            font-weight: 800;
+            color: rgba(120, 117, 160, 0.12);
+            letter-spacing: 6px;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+        }
+
+        .stage {
+
+            width: 80%;
+            justify-self: center;
+            /* max-width: 1000px; */
+            margin-top: 100px;
+            margin-bottom: 50px;
+
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: rotateX(10deg) rotateY(-10deg) translateY(0)
+            }
+
+            50% {
+                transform: rotateX(6deg) rotateY(-6deg) translateY(-20px)
+            }
+        }
+
+        .browser-card {
+            width: 90%;
+            justify-self: center;
+            position: relative;
+            width: 100%;
+            background: var(--card);
+            border-radius: 22px;
+            padding: 28px 28px 36px;
+            box-shadow: 0 30px 60px rgba(66, 52, 115, 0.15), 0 6px 18px rgba(20, 18, 36, 0.08);
+            transform-style: preserve-3d;
+            transition: transform .6s ease;
+        }
+
+        .browser-top {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px
+        }
+
+        .dots {
+            display: flex;
+            gap: 8px
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.25)
+        }
+
+        .dot.red {
+            background: #ff6b6b
+        }
+
+        .dot.yellow {
+            background: #ffd166
+        }
+
+        .dot.green {
+            background: #6be86b
+        }
+
+        .address {
+            flex: 1;
+            display: flex;
+            justify-content: center
+        }
+
+        .address input {
+            background: var(--glass);
+            border: 0;
+            padding: 10px 14px;
+            border-radius: 999px;
+            width: 60%;
+            outline: none;
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 28px;
+            align-items: start
+        }
+
+        @media (max-width:900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        h1 {
+            font-size: 44px;
+            margin: 6px 0 12px;
+            transform: translateZ(60px)
+        }
+
+        p.lead {
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 16px;
+            margin: 0 0 18px;
+            transform: translateZ(40px)
+        }
+
+        .founder {
+            background: linear-gradient(180deg, #fbfbff, #ffffff);
+            padding: 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(99, 86, 255, 0.06);
+            transform: translateZ(30px)
+        }
+
+        .founder h3 {
+            margin: 0 0 6px;
+            font-size: 18px
+        }
+
+        .founder p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .stats {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 14px;
+            transform: translateZ(50px)
+        }
+
+        .stat {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        .stat .num {
+            font-weight: 700;
+            font-size: 20px
+        }
+
+        .stat .label {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .vision {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transform: translateZ(40px)
+        }
+
+        .pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600
+        }
+
+        .pill .icon-small {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent), #33d7ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white
+        }
+
+        .cta {
+            margin-top: 20px;
+            transform: translateZ(50px)
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 18px;
+            border-radius: 12px;
+            background: linear-gradient(90deg, var(--accent), #7f13de);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(99, 86, 255, 0.2)
+        }
+
+        .shadow-base {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -40px;
+            width: 80%;
+            height: 50px;
+            background: radial-gradient(ellipse at center, rgba(98, 86, 255, 0.15), transparent 70%);
+            border-radius: 50%;
+            filter: blur(8px);
+            z-index: -1
+        }
+
+        .visual {
+            height: 200px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f8f9ff, #eef3ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(99, 86, 255, 0.05);
+            transform: translateZ(40px)
+        }
+
+        .visual img {
+            width: 82%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 12px 30px rgba(99, 86, 255, 0.08)
+        }
+
+        .attribution {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 13px;
+            transform: translateZ(20px)
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo-mobile">
+                    <a href="index.html">globallylinfulancer</a>
+                    <!-- <span>globalinfluencer</span> -->
+                    <div class="logo-mobile-box">
+                    </div>
+
+                    <button class="mobile-menu-button" aria-label="Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+
+                <div class="nav-links">
+                    <ul class="left-nav">
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="work.html">WORK</a></li>
+                        <li><a href="brand.html">BRANDS</a></li>
+
+                        <!-- <li><a href="#">MEASUREMENT</a></li>
+                        <li><a href="#">CAREERS</a></li> -->
+                        <!-- <li><a href="resources.html">RESOURCES</a></li> -->
+                        <!-- <li><a href="team.html">our team</a></li> -->
+                    </ul>
+
+                    <div class="right-nav">
+                        <a href="signin.html" class="sign-in">SIGN IN</a>
+                        <a href="contact.html" class="cta-button">contact</a>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="bg-title">About Us</div>
+
+    <div class="stage">
+        <div class="browser-card" role="region" aria-label="About Globally Influencer">
+            <div class="browser-top">
+                <div class="dots">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+                <div class="address"><input aria-label="search" value="globallyinfluencer.com/about" readonly></div>
+                <div class="icon">+</div>
+            </div>
+
+            <div class="content">
+                <main>
+                    <h1>About Us</h1>
+                    <p class="lead">At Globally Influencer, our mission is simple — to connect brands with the right
+                        influencers and create authentic campaigns that drive real results. We believe in the power of
+                        storytelling, creativity, and data-driven strategies to help brands grow worldwide.</p>
+
+                    <section class="founder" aria-labelledby="founder-heading">
+                        <h3 id="founder-heading">Co-Founded Mohammad Hasibuddin</h3>
+                        <p>Mohammad (Hasib) is a content creator and strategist with 5+ years of experience. He built a
+                            following of 300K+ on Instagram and 100K+ on YouTube — experience that powers our approach
+                            to audience-first campaigns.</p>
+                    </section>
+
+                    <p style="margin-top:14px;color:var(--muted);line-height:1.6;transform:translateZ(20px)">That
+                        creator’s journey became the foundation of Globally Influencer — an agency dedicated to helping
+                        brands achieve the same success through influencer partnerships.</p>
+
+                    <div class="vision">
+                        <div class="pill"><span class="icon-small">🌍</span>
+                            <div><strong>Our Vision:</strong> To become one of the most trusted global influencer
+                                marketing agencies by bridging the gap between brands and creators.</div>
+                        </div>
+                        <div class="pill"><span class="icon-small">⚡</span>
+                            <div><strong>Our Promise:</strong> Creative campaigns, transparent communication, and
+                                measurable growth.</div>
+                        </div>
+                    </div>
+
+                    <div class="cta"><a class="btn" href="#contact">Get in touch</a></div>
+                    <div class="attribution">
+                        At Globally Influencer, we don’t just manage collaborations — we craft
+                        stories that connect brands with people.
+                    </div>
+
+
+                </main>
+
+                <aside>
+                    <div class="visual">
+                        <img src="/assets/founder-laptop.jpg" alt="creator working on laptop"
+                            onerror="this.style.opacity=0.06;this.style.transform='scale(1.02)';this.alt=''" />
+                    </div>
+
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="num">300K+</div>
+                            <div class="label">Instagram followers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">100K+</div>
+                            <div class="label">YouTube subscribers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">150+</div>
+                            <div class="label">Influencer partners worldwide</div>
+                        </div>
+                    </div>
+
+                </aside>
+            </div>
+            <div class="shadow-base"></div>
+        </div>
+    </div>
+    <footer>
+        <div class="sentiment">
+            POSITIVE SENTIMENT: <span class="sentiment-value">92%</span>
+        </div>
+
+        <div class="footer-cta">
+            <h2>READY TO MAKE WAVES?</h2>
+            <a class="footer-button" href="contact.html">LET'S TALK</a>
+        </div>
+
+        <div class="footer-links">
+            <div class="footer-column">
+                <h3>PRODUCT</h3>
+                <ul>
+                    <li><a href="brand.html">Brands</a></li>
+                    <!-- <li><a href="#">Measurement</a></li> -->
+                    <li><a href="creater.html">Creators</a></li>
+
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <!-- <li><a href="#">Careers</a></li> -->
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>RESOURCES</h3>
+                <ul>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="creator payments.html">Creator Payments</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>SOCIAL</h3>
+                <ul>
+                    <li><a href="https://www.instagram.com/globalinfulancer">Instagram</a></li>
+                    <li><a href="#">X</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>LEGAL</h3>
+                <ul>
+                    <li><a href="platformterms.html">Platform Terms</a></li>
+                    <li><a href="privicy.html">Privacy</a></li>
+                    <!-- <li><a href="Creator Terms Company.html">Creator Terms Company</a></li> -->
+                    <li><a href="Creator_Terms.html">Creator Terms</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Influencer Marketing Agency. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
