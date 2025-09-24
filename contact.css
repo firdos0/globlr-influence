@@ -48,7 +48,7 @@ body {
     padding-right: 40px;
     max-width: 1200px;
     /* Same as container */
-    margin: 0 auto;
+    /* margin: 0 auto; */
     /* Center content */
     padding-left: 40px;
     /* Restore left padding */
@@ -460,7 +460,7 @@ body {
     }
 
     .hero-content {
-        padding-right: 0;
+        /* padding-right: 0; */
         margin-bottom: 40px;
     }
 
